@@ -1,0 +1,184 @@
+<div class="row">
+    <div class="col-lg-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <h4 class="col card-title">
+                        <div *ngIf="id===0;then content else other_content">here is ignored
+                        </div>
+                        <ng-template #content>Agregar Comunidad</ng-template>
+                        <ng-template #other_content><label>Editar Comunidad</label></ng-template>
+                    </h4>
+                    <span class="col text-right">
+                        <button class="btn btn-danger pl-3" routerLink="/administracion">
+                            <div>
+                                <i class="fa fa-arrow-left d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block"><i class="fa fa-arrow-left"></i> Volver</span>
+                            </div>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="px-3 pt-2">
+                <form [formGroup]="forma">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group" [ngClass]="{ 'has-danger': !forma.controls['Nombre'].value}">
+                                <label for="txtNombre">Nombre comunidad</label>
+                                <input type="text" class="form-control" formControlName="Nombre" value='Test'
+                                    placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group" [ngClass]="{ 'has-danger': !forma.controls['Direccion'].value}">
+                                <label>Dirección</label>
+                                <input type="text" class="form-control" value='Test' formControlName="Direccion"
+                                    placeholder="Dirección">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group"
+                                [ngClass]="{ 'has-danger': !forma.controls['NombreContacto'].value}">
+                                <label>Nombre de contacto</label>
+                                <input type="text" class="form-control" value='Test' formControlName="NombreContacto">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group" [ngClass]="{ 'has-danger': !forma.controls['FonoContacto'].value}">
+                                <label>Teléfono de contacto</label>
+                                <input type="number" class="form-control" value="1233123123"
+                                    formControlName="FonoContacto">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group" [ngClass]="{ 'has-danger': !forma.controls['EmailContacto'].value}">
+                                <label for="txtEmail">Email de contacto</label>
+                                <input type="email" class="form-control" value='Test@test.com'
+                                    formControlName="EmailContacto" placeholder="nombre@dominio.cl">
+                            </div>
+                            <div *ngIf="forma.controls['EmailContacto'].errors?.pattern"
+                                class="text-danger form-control-feedback">El campo no cumple con formato de correo.
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group" [ngClass]="{ 'has-danger': !forma.controls['MaximoUsuario'].value}">
+                                <label>Máximo usuario</label>
+                                <input type="number" class="form-control" value="1233" formControlName="MaximoUsuario">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group"
+                                [ngClass]="{ 'has-danger': !forma.controls['MaximoPropiedades'].value}">
+                                <label>Máximo Propiedades</label>
+                                <input type="number" class="form-control" value="1233"
+                                    formControlName="MaximoPropiedades">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group" [ngClass]="{ 'has-danger': !forma.controls['RutaFirebase'].value}">
+                                <label>Ruta Firebase</label>
+                                <input type="text" class="form-control" (keydown.space)="$event.preventDefault()"
+                                    value='RutaFire' formControlName="RutaFirebase">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group"
+                                [ngClass]="{ 'has-danger': !forma.controls['Administrador1'].value}">
+                                <label for="txtEmail">Administrador 1</label>
+                                <input type="email" class="form-control" value='Test@test.com'
+                                    formControlName="Administrador1"
+                                    placeholder="Ingrese el correo de un Administrador">
+                            </div>
+                            <div *ngIf="forma.controls['Administrador1'].errors?.pattern"
+                                class="text-danger form-control-feedback">El campo no cumple con formato de correo.
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Administrador 2</label>
+                                <input type="email" class="form-control" formControlName="Administrador2"
+                                    placeholder="Ingrese el correo de un Administrador">
+                            </div>
+                            <div *ngIf="forma.controls['Administrador2'].errors?.pattern"
+                                class="text-danger form-control-feedback">El campo no cumple con formato de correo.
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-2 col-sm-2 mt-2">
+                            <div class="form-group">
+                                <label for="txtEmail">Es propietario?</label>
+                                <div class="custom-control custom-checkbox ml-4">
+                                    <input formControlName="AdminProp1" type="checkbox" class="custom-control-input lg"
+                                        id="EsProp1">
+                                    <label class="custom-control-label" for="EsProp1">SI</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 col-sm-2 mt-2">
+                            <div class="form-group">
+                                <label for="txtEmail">Es propietario?</label>
+                                <div class="custom-control custom-checkbox ml-4">
+                                    <input formControlName="AdminProp2" type="checkbox" class="custom-control-input lg"
+                                        id="EsProp2"> 
+                                    <label class="custom-control-label" for="EsProp2">SI</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group" [ngClass]="{ 'has-danger': !forma.controls['Nombre'].value}">
+                                <label>Nombre del propietario</label>
+                                <input type="text" class="form-control" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group" [ngClass]="{ 'has-danger': !forma.controls['Direccion'].value}">
+                                <label>Nombre del propietario</label>
+                                <input type="text" class="form-control" placeholder="Dirección">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group"
+                                [ngClass]="{ 'has-danger': !forma.controls['NombreContacto'].value}">
+                                <label>Propietario de:</label>
+                                <select name="miselect" class="form-control" formControlName="propiedadSeleccionada">
+                                    <option [value]="item.Id" *ngFor="let item of propiedades">{{item.NumeroCasa}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group" [ngClass]="{ 'has-danger': !forma.controls['FonoContacto'].value}">
+                                <label>Propietario de:</label>
+                                <input type="number" class="form-control">
+                            </div>
+                        </div> -->
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group" [ngClass]="{ 'has-danger': !forma.controls['Habilitado'].value}">
+                                <div class="form-group">
+                                    <label for="txtEmail">Habilitado</label>
+                                    <div class="custom-control custom-switch ">
+                                        <input type="checkbox" class="custom-control-input lg"
+                                            formControlName="Habilitado" id="customSwitches">
+                                        <label class="custom-control-label" for="customSwitches"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="id===0;then content_btn else other_content_btn">here is ignored
+                    </div>
+                    <ng-template #content_btn>
+                        <button class="btn btn-success" [disabled]="!forma.valid">
+                            Agregar Comunidad
+                        </button>
+                    </ng-template>
+                    <ng-template #other_content_btn><label>
+                            <button class="btn btn-success" [disabled]="!forma.valid">
+                                Editar Comunidad
+                            </button></label>
+                    </ng-template>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

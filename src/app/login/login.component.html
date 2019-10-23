@@ -1,0 +1,24 @@
+<div class="card card-user" style="width: 20rem; margin: auto auto; margin-top: 5rem">
+    <div class="">
+        <img src="assets/img/AbrePorton300x223.png" alt="..." />
+    </div>
+    <div class="content">
+        <form>
+            <div class="form-group px-3">
+                <label>Correo</label>
+                <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Ingresar Correo Electrónico">
+            </div>
+            <div class="form-group px-3">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" [(ngModel)]="password" placeholder="Ingresar Contraseña" name="password">
+            </div>
+            <br>
+            <div class="px-3">
+                <button type="submit" class="btn btn-primary btn-fill btn-block" (click)="login()">Ingresar</button>
+                <button class="btn btn-outline-secondary btn-block" [routerLink]="['/recuperar']">Recuperar Contraseña</button>
+            </div>
+        </form>
+    </div>
+
+
+</div>
