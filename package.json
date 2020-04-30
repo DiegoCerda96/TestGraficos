@@ -37,7 +37,7 @@
     "datatables.net-dt": "^1.10.19",
     "express": "4.17.1",
     "firebase": "^6.6.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "moment": "2.24.0",
     "ngx-moment": "^3.4.0",
     "ngx-paginate": "^2.0.1",
